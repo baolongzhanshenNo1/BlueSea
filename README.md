@@ -36,7 +36,7 @@
 
 1. 下载本项目代码
    ```bash
-   git clone https://github.com/your-username/BlueSea.git
+   git clone https://github.com/baolongzhanshenNo1/BlueSea.git
    cd BlueSea
    ```
 
@@ -95,7 +95,11 @@ BlueSea/
 └── logic.js                       # 核心业务逻辑
 ```
 
-## 🔄 版本历史
+## � 鸣谢
+
+本项目是在原作者 [jiangqizheng](https://github.com/jiangqizheng) 开发的 BlueSea 项目基础上，升级改造为完全兼容 Chrome 139+ 的 Manifest V3 版本。在此特别感谢原作者的开源贡献！
+
+## �🔄 版本历史
 
 查看 [CHANGELOG.md](CHANGELOG.md) 了解详细的版本更新记录。
 
@@ -139,7 +143,7 @@ MIT License - 查看 [LICENSE](LICENSE) 了解详情
 
 如有问题或建议，请：
 
-1. 查看 [Issues](https://github.com/your-username/BlueSea/issues)
+1. 查看 [Issues](https://github.com/baolongzhanshenNo1/BlueSea/issues)
 2. 创建新的 Issue
 3. 查看项目文档
 

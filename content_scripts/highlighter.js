@@ -65,8 +65,13 @@ const forLowerCase = (text) => {
 
 const calcEls = (a, b) => {
   return new Promise((resolve) => {
-    chrome.runtime.sendMessage({ type: 'calcEls', payload: [a, b] }, (r) => {
-      resolve(r);
+    chrome.runtime.sendMessage({ type: 'calcEls', payload: [a, b] }, (response) => {
+      if (response && response.success) {
+        resolve(response.data);
+      } else {
+        console.error('CalcEls failed:', response?.error);
+        resolve([]);
+      }
     });
   });
 };

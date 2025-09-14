@@ -1,13 +1,22 @@
-const {
-  html,
-  Component,
-  render,
-  useEffect,
-  useState,
-  useCallback,
-  useRef,
-  useMemo,
-} = window.$htm || {};
+// Check if we're in a context where $htm is available
+let html, Component, render, useEffect, useState, useCallback, useRef, useMemo;
+
+try {
+  if (typeof window !== 'undefined' && window.$htm) {
+    ({
+      html,
+      Component,
+      render,
+      useEffect,
+      useState,
+      useCallback,
+      useRef,
+      useMemo,
+    } = window.$htm);
+  }
+} catch (e) {
+  console.log('$htm not available, some features may be limited');
+}
 
 class Storage {
   constructor(key) {
@@ -29,16 +38,16 @@ class Storage {
     }
   }
   async get() {
-    return new Promise(async (resolve) => {
-      const storage = await this._getRootStorage();
+    const storage = await this._getRootStorage();
+    return new Promise((resolve) => {
       storage.local.get(this.key, (obj) => {
         resolve(obj[this.key]);
       });
     });
   }
   async set(value) {
-    return new Promise(async (resolve) => {
-      const storage = await this._getRootStorage();
+    const storage = await this._getRootStorage();
+    return new Promise((resolve) => {
       storage.local.set({ [this.key]: value }, () => {
         resolve();
       });
@@ -392,6 +401,9 @@ class BlueSea {
 }
 
 const bluesea = new BlueSea();
+
+// 添加加载确认
+console.log('BlueSea extension loaded successfully!', bluesea);
 
 class FunCtrl {
   fns = [];

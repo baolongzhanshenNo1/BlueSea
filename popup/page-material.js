@@ -530,8 +530,13 @@ const Material = () => {
                         return new Promise((resolve) => {
                           chrome.runtime.sendMessage(
                             { type: 'tf', payload: text },
-                            (r) => {
-                              resolve(r);
+                            (response) => {
+                              if (response && response.success) {
+                                resolve(response.data);
+                              } else {
+                                console.error('Translation failed:', response?.error);
+                                resolve(null);
+                              }
                             }
                           );
                         });
